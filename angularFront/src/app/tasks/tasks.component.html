@@ -9,7 +9,7 @@
     <tr *ngFor="let task of tasks">
         <td>
             <div class="form-check">
-                <input (click)="completedTask(task); update()" [(ngModel)]="task.state"  class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                <input (change)="completedTask(task); update()" [(ngModel)]="task.state"  class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
             </div>
         </td>
         <td class="text-left ">
