@@ -1,0 +1,29 @@
+<form class="form" (submit)="add(taskLabel.value); taskLabel.value=''">
+    <div class="form-group">
+        <input #taskLabel class="form-control" placeholder="Task Name" />
+    </div>
+    <input type="submit" value="SUBMIT" class="btn btn-success btn-lg btn-block" />
+</form>
+
+<table class="table">
+    <tr *ngFor="let task of tasks">
+        <td>
+            <div class="form-check">
+                <input (click)="completedTask(task); update()" [(ngModel)]="task.state"  class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+            </div>
+        </td>
+        <td class="text-left ">
+            <a (click)="edit(task)">
+                <span *ngIf="task!==editTask">{{task.label}}</span>
+                <input *ngIf="task===editTask" [(ngModel)]="task.label" (blur)="update()" (keyup.enter)="update()">
+            </a>
+        </td>
+        <td class="text-right">
+            <button class="btn btn-danger" label="delete task" (click)="delete(task)">Delete</button>
+        </td>
+    </tr>
+</table>
+
+<div class="card card-body bg-light text-center">
+    <span class="small">* click on item to edit and just click anywhere to update</span>
+</div>
